@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codewithajk</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="codemirror.min.css">
+    <script src="codemirror.min.js"></script>
+    <script src="python.min.js"></script>
+    <link rel="stylesheet" href="monokai.min.css">
+    <link rel="stylesheet" href="show-hint.min.css">
+
+    <script src="show-hint.min.js"></script>
+    <script src="anyword-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/addon/hint/python-hint.min.js"></script>
+    <link rel="stylesheet" href="dracula.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+    <div class="spinner" id="loadingSpinner">
+        <span id="spinnerText"></span>
+        <div class="spinner-border"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h3>Python IDE</h3>
+            <button class="theme-toggle" id="themeToggle">
+    <span class="icon" id="themeIcon">
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+            <path d="M12 2a10 10 0 107.95 16.05A7.5 7.5 0 1112 2z"/>
+        </svg>
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px" style="display: none;">
+            <path d="M12 4a1 1 0 010-2 1 1 0 010 2zm0 18a1 1 0 010 2 1 1 0 010-2zm10-10a1 1 0 010-2 1 1 0 010 2zM4 12a1 1 0 010-2 1 1 0 010 2zm12.07-7.07a1 1 0 011.41 0 1 1 0 010 1.41l-1.06 1.06a1 1 0 11-1.41-1.41l1.06-1.06zM6.34 17.66a1 1 0 010-1.41l1.06-1.06a1 1 0 111.41 1.41l-1.06 1.06a1 1 0 01-1.41 0zm11.32 0a1 1 0 011.41 0 1 1 0 010 1.41l-1.06 1.06a1 1 0 01-1.41-1.41l1.06-1.06zM6.34 6.34a1 1 0 010 1.41l-1.06 1.06a1 1 0 11-1.41-1.41L4.93 6.34a1 1 0 011.41 0zM12 6a6 6 0 100 12 6 6 0 000-12z"/>
+        </svg>
+    </span>
+            </button>
+        </div>
+
+        <div class="ide-container">
+            <!-- Editor Panel -->
+            <div class="editor-panel">
+                <div class="panel-header">Editor</div>
+                <div class="editor">
+                    <textarea id="editor">print("Coding Demands Patience.")</textarea>
+                </div>
+            </div>
+            <!-- Controls Section -->
+            <div class="controls">
+                <button id="runButton">Run</button>
+                <button id="saveCode">Save</button>
+                <button id="copyCode">Copy</button>
+                <button id="clearCode">Clear</button>
+
+            </div>
+        
+            <!-- Output Panel -->
+            <div class="output-panel">
+                <div class="panel-header">Output</div>
+                <div class="output">
+                    <pre id="output">Coding Demands Patience</pre>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Saved Code Section -->
+        <div class="saved-code-container">
+            <div class="panel-header">Saved Code</div>
+            <div id="savedCodeList">No saved code yet.</div>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.27.0/full/pyodide.js"></script>
+    <script src="script.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+/* Ensure the spinner is centered in the viewport */
+.spinner {
+    display: none; /* Initially hidden */
+    position: fixed; /* Fixed to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for size */
+    z-index: 9999; /* Ensure it's above all content */
+    width: 70px; /* Total width of the spinner container */
+    height: 70px; /* Total height of the spinner container */
+    text-align: center; /* Align text inside the spinner */
+}
+
+/* Countdown text stays centered and static */
+#spinnerText {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for text size */
+    font-size: 20px; /* Text font size */
+    font-weight: bold;
+    color: #5AACC3; /* Text color */
+    z-index: 2; /* Ensure it stays above the spinner border */
+}
+
+/* Rotating border around the countdown text */
+.spinner-border {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for spinner size */
+       background: linear-gradient(135deg,,#5AACC3);
+    border: 5px solid rgba(0, 0, 0, 0.1); /* Light border */
+    border-top: 5px solid var(--primary-color); /* Spinning border */
+    border-radius: 50%;
+    width: 40px; /* Spinner size */
+    height: 40px;
+    animation: spin 1s linear infinite; /* Smooth rotation */
+    z-index: 1; /* Ensure it stays behind the text */
+}
+
+/* Smooth rotation animation */
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Show spinner when active */
+.spinner.loading {
+    display: block;
+}
+
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #333;
+    --primary-color: #7A89C2;
+    --secondary-color: #0056b3;
+    --panel-bg-color: #fff;
+    --editor-bg-color: #fff;
+    --editor-text-color: #000;
+    --output-bg-color: #e9ecef;
+    --output-text-color: #000;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f0f0f0;
+    --primary-color: #1e88e5;
+    --secondary-color: #1565c0;
+    --panel-bg-color: #1e1e1e;
+    --editor-bg-color: #1e1e1e;
+    --editor-text-color: #f0f0f0;
+    --output-bg-color: #2b2b2b;
+    --output-text-color: #e9e9e9;
+}
+
+/* Body and container styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    width: 97%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    color: white;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+.header h3 {
+    margin: 0;
+    font-size: 17px;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #5AACC3,#7A89C2);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+      background: linear-gradient(135deg,#7A89C2, #5AACC3);
+
+    transform: scale(1.1);
+}
+
+/* IDE layout */
+.ide-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.editor-panel, .output-panel {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+
+
+/* CodeMirror editor */
+.editor .CodeMirror {
+    height: 300px;
+    background: var(--editor-bg-color);
+    color: var(--editor-text-color);
+}
+
+.output {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5px;
+    height: 300px;
+    overflow: auto; /* Enables both vertical and horizontal scrolling */
+    background: var(--output-bg-color);
+    color: var(--output-text-color);
+    font-family: monospace;
+    font-size: 16px;
+
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a polished look */
+}
+
+/* Scrollbar styling */
+.output::-webkit-scrollbar {
+    width: 10px; /* Vertical scrollbar width */
+    height: 10px; /* Horizontal scrollbar height */
+}
+
+.output::-webkit-scrollbar-thumb {
+    background: #5AACC3; /* Color of the scrollbar handle */
+    border-radius: 5px; /* Rounded corners for the scrollbar handle */
+}
+
+.output::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color); /* Handle color on hover */
+}
+
+.output::-webkit-scrollbar-track {
+    background: var(--output-bg-color); /* Track background */
+    border-radius: 5px; /* Rounded corners for the track */
+}
+
+
+/* Button styles */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.controls button {
+    flex: 1;
+    max-width: 150px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: linear-gradient(135deg,#7A89C2,#5AACC3);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.controls button:hover {
+    background: var(--secondary-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .editor-panel, .output-panel {
+        flex: 1 1 100%;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+    }
+
+    .controls button {
+        flex: 1 1 45%;
+    }
+}
+
+/* Saved code section */
+.saved-code-container {
+
+margin-bottom: 60px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: var(--panel-bg-color);
+}
+
+.saved-code-container .panel-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+     background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    text-align: center;
+}
+
+/* Saved code list */
+#savedCodeList {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: monospace;
+}
+
+/* Saved code item styling */
+.saved-code-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/* Dark theme styles for saved code section */
+.saved-code-container[data-theme="dark"] {
+    background: #1e1e1e;
+    color: #e9e9e9;
+    border: 1px solid #444444;
+}
+
+.saved-code-container[data-theme="dark"] .panel-header {
+  background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    color: white;
+}
+
+.saved-code-container[data-theme="dark"] #savedCodeList {
+    background: #2b2b2b;
+    color: #e9e9e9;
+    border: 1px solid #444444;
+}
+
+.saved-code-container[data-theme="dark"] .saved-code-item {
+    background: #2b2b2b;
+    color: #e9e9e9;
+    border: 1px solid #444444;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.saved-code-container[data-theme="dark"] .saved-code-item:hover {
+    background: #333333;
+}
+
+/* Delete button styling *//* Button container styles */
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px; /* Space above buttons */
+}
+
+/* Copy button styles */
+.copy-button {
+     background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #5AACC3;
+}
+
+/* Delete button styles */
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+/*  */
+/* Scrollbar styling for saved code list */
+#savedCodeList::-webkit-scrollbar,.saved-code-item::-webkit-scrollbar {
+    width: 10px; /* Vertical scrollbar width */
+    height: 10px; /* Horizontal scrollbar height */
+}
+
+#savedCodeList::-webkit-scrollbar-thumb,.saved-code-item::-webkit-scrollbar-thumb {
+    background: #5AACC3; /* Color of the scrollbar handle */
+    border-radius: 5px; /* Rounded corners for the scrollbar handle */
+}
+
+#savedCodeList::-webkit-scrollbar-thumb:hover,.saved-code-item::-webkit-scrollbar-thumb:hover {
+    background: #7A89C2; /* Handle color on hover */
+}
+
+#savedCodeList::-webkit-scrollbar-track,.saved-code-item::-webkit-scrollbar-track {
+    background: #7A89C2; /* Track background */
+    border-radius: 5px; /* Rounded corners for the track */
+}
+/* Align controls below the editor */
+.controls {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin: 10px 0; /* Space above and below the buttons */
+}
+
+.controls button {
+    flex: 1;
+    max-width: 150px;
+    padding: 10px 20px;
+    font-size: 16px;
+
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.controls button:hover {
+    background: linear-gradient(135deg,#5AACC3,#7A89C2);
+}
+
+/* Make the layout responsive */
+.ide-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.editor-panel,
+.output-panel {
+    width: 100%; /* Take full width */
+    background: var(--panel-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.panel-header {
+    padding: 10px;
+     background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    color: white;
+    font-size: 18px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .controls {
+        flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    }
+
+    .controls button {
+        flex: 1 1 45%; /* Adjust button size */
+        margin: 5px 0; /* Add space between rows */
+    }
+}
+.controls {
+    display: flex;
+    justify-content: space-between; /* Distributes buttons equally */
+    gap: 10px;
+    margin: 10px 0; /* Space above and below the buttons */
+}
+
+.controls button {
+    flex: 1 1 30%; /* All buttons will take equal width */
+    max-width: none; /* Remove width limit for equal alignment */
+    padding: 10px;
+    font-size: 18px;
+        background: linear-gradient(135deg,#7A89C2, #5AACC3);
+font-weight:bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-align: center;
+}
+
+.controls button:hover {
+     background: linear-gradient(135deg, #5AACC3,#7A89C2);
+
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .controls {
+        gap: 5px; /* Reduce gap between buttons on smaller screens */
+    }
+
+    .controls button {
+        flex: 1 1 0%; /* Buttons remain equal width */
+        font-size: 14px; /* Slightly smaller text for mobile */
+    }
+}
+
+
