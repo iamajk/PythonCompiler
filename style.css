@@ -29,7 +29,6 @@
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust for spinner size */
-       background: linear-gradient(135deg,,#5AACC3);
     border: 5px solid rgba(0, 0, 0, 0.1); /* Light border */
     border-top: 5px solid var(--primary-color); /* Spinning border */
     border-radius: 50%;
@@ -57,8 +56,8 @@
 :root {
     --bg-color: #f9f9f9;
     --text-color: #333;
-    --primary-color: #7A89C2;
-    --secondary-color: #0056b3;
+    --primary-color: #6A4ED4;
+    --secondary-color:#E16AB1 ;
     --panel-bg-color: #fff;
     --editor-bg-color: #fff;
     --editor-text-color: #000;
@@ -69,8 +68,8 @@
 [data-theme="dark"] {
     --bg-color: #121212;
     --text-color: #f0f0f0;
-    --primary-color: #1e88e5;
-    --secondary-color: #1565c0;
+    --primary-color: #6A4ED4;
+    --secondary-color:#E16AB1 ;
     --panel-bg-color: #1e1e1e;
     --editor-bg-color: #1e1e1e;
     --editor-text-color: #f0f0f0;
@@ -104,7 +103,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    background: linear-gradient(135deg, #6A4ED4, #E16AB1);
     color: white;
     padding: 10px 10px;
     border-radius: 10px;
@@ -119,7 +118,7 @@ body {
 .theme-toggle {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #5AACC3,#7A89C2);
+    background: linear-gradient(135deg, #6A4ED4, #E16AB1);
     border: none;
     border-radius: 50%;
     display: flex;
@@ -132,7 +131,7 @@ body {
 }
 
 .theme-toggle:hover {
-      background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    background: linear-gradient(135deg,  #E16AB1,#6A4ED4);
 
     transform: scale(1.1);
 }
@@ -186,16 +185,16 @@ body {
 }
 
 .output::-webkit-scrollbar-thumb {
-    background: #5AACC3; /* Color of the scrollbar handle */
+    background:  #6A4ED4; /* Color of the scrollbar handle */
     border-radius: 5px; /* Rounded corners for the scrollbar handle */
 }
 
 .output::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color); /* Handle color on hover */
+    background:#6A4ED4; /* Handle color on hover */
 }
 
 .output::-webkit-scrollbar-track {
-    background: var(--output-bg-color); /* Track background */
+    background:#E16AB1  ; /* Track background */
     border-radius: 5px; /* Rounded corners for the track */
 }
 
@@ -212,7 +211,7 @@ body {
     max-width: 150px;
     padding: 10px 20px;
     font-size: 16px;
-    background: linear-gradient(135deg,#7A89C2,#5AACC3);
+    background: linear-gradient(135deg, #6A4ED4, #E16AB1);
     color: white;
     border: none;
     border-radius: 5px;
@@ -252,7 +251,7 @@ margin-bottom: 60px;
 .saved-code-container .panel-header {
     font-weight: bold;
     margin-bottom: 10px;
-     background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    background: linear-gradient(135deg, #6A4ED4, #E16AB1);
     text-align: center;
 }
 
@@ -290,7 +289,7 @@ margin-bottom: 60px;
 }
 
 .saved-code-container[data-theme="dark"] .panel-header {
-  background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    background: linear-gradient(135deg, #6A4ED4, #E16AB1);
     color: white;
 }
 
@@ -320,7 +319,7 @@ margin-bottom: 60px;
 
 /* Copy button styles */
 .copy-button {
-     background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    background: linear-gradient(135deg, #6A4ED4, #E16AB1);
     color: white;
     border: none;
     padding: 5px 10px;
@@ -355,16 +354,16 @@ margin-bottom: 60px;
 }
 
 #savedCodeList::-webkit-scrollbar-thumb,.saved-code-item::-webkit-scrollbar-thumb {
-    background: #5AACC3; /* Color of the scrollbar handle */
+    background: #6A4ED4; /* Color of the scrollbar handle */
     border-radius: 5px; /* Rounded corners for the scrollbar handle */
 }
 
 #savedCodeList::-webkit-scrollbar-thumb:hover,.saved-code-item::-webkit-scrollbar-thumb:hover {
-    background: #7A89C2; /* Handle color on hover */
+    background:  #E16AB1; /* Handle color on hover */
 }
 
 #savedCodeList::-webkit-scrollbar-track,.saved-code-item::-webkit-scrollbar-track {
-    background: #7A89C2; /* Track background */
+    background:  #E16AB1; /* Track background */
     border-radius: 5px; /* Rounded corners for the track */
 }
 /* Align controls below the editor */
@@ -389,7 +388,7 @@ margin-bottom: 60px;
 }
 
 .controls button:hover {
-    background: linear-gradient(135deg,#5AACC3,#7A89C2);
+    background: linear-gradient(135deg, #E16AB1, #6A4ED4);
 }
 
 /* Make the layout responsive */
@@ -409,7 +408,7 @@ margin-bottom: 60px;
 
 .panel-header {
     padding: 10px;
-     background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    background: linear-gradient(135deg, #6A4ED4, #E16AB1);
     color: white;
     font-size: 18px;
 }
@@ -437,7 +436,7 @@ margin-bottom: 60px;
     max-width: none; /* Remove width limit for equal alignment */
     padding: 10px;
     font-size: 18px;
-        background: linear-gradient(135deg,#7A89C2, #5AACC3);
+    background: linear-gradient(135deg, #6A4ED4, #E16AB1);
 font-weight:bold;
     color: white;
     border: none;
@@ -448,7 +447,7 @@ font-weight:bold;
 }
 
 .controls button:hover {
-     background: linear-gradient(135deg, #5AACC3,#7A89C2);
+    background: linear-gradient(135deg, #E16AB1, #6A4ED4);
 
 }
 
@@ -463,5 +462,7 @@ font-weight:bold;
         font-size: 14px; /* Slightly smaller text for mobile */
     }
 }
-
+#output{
+min-height:300px;
+}
 
